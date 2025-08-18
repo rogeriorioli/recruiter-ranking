@@ -1,0 +1,108 @@
+CURRÍCULO VITAE
+
+DADOS PESSOAIS
+Nome: Ana Carolina Silva Santos
+Email: ana.carolina@email.com
+Telefone: (11) 99999-8888
+Localização: São Paulo, SP
+LinkedIn: linkedin.com/in/ana-carolina-silva
+
+FORMAÇÃO ACADÊMICA
+Bacharelado em Ciência da Computação
+Universidade de São Paulo (USP) - 2018-2022
+TCC: "Desenvolvimento de Aplicações Web com React e Node.js"
+
+EXPERIÊNCIA PROFISSIONAL
+
+Desenvolvedora Full Stack Senior - TechCorp (2022-2024)
+• Liderança técnica de equipe de 5 desenvolvedores
+• Desenvolvimento de aplicações web com React, TypeScript e Node.js
+• Implementação de arquitetura microserviços com Docker e Kubernetes
+• Otimização de performance e SEO
+• Mentoria de desenvolvedores júnior
+• Metodologias ágeis (Scrum, Kanban)
+
+Desenvolvedora Frontend - StartupXYZ (2021-2022)
+• Desenvolvimento de interfaces responsivas com React e Vue.js
+• Integração com APIs RESTful e GraphQL
+• Implementação de testes automatizados (Jest, Cypress)
+• Trabalho com design system e componentização
+• Experiência com PWA e aplicações mobile-first
+
+Estagiária de Desenvolvimento - EmpresaABC (2020-2021)
+• Desenvolvimento frontend com HTML5, CSS3, JavaScript
+• Criação de layouts responsivos
+• Integração com APIs
+• Suporte ao time de UX/UI
+
+HABILIDADES TÉCNICAS
+
+Linguagens de Programação:
+• JavaScript (ES6+), TypeScript, Python, Java
+
+Frontend:
+• React, Vue.js, Angular
+• HTML5, CSS3, Sass, Tailwind CSS
+• Redux, Vuex, Context API
+• Jest, Cypress, Testing Library
+
+Backend:
+• Node.js, Express, Fastify
+• Python, Django, Flask
+• Java, Spring Boot
+• GraphQL, REST APIs
+
+Banco de Dados:
+• MongoDB, PostgreSQL, MySQL
+• Redis, Elasticsearch
+• ORMs: Mongoose, Prisma, Sequelize
+
+DevOps & Ferramentas:
+• Git, GitHub, GitLab
+• Docker, Kubernetes
+• AWS, Google Cloud Platform
+• Jenkins, GitHub Actions
+• Linux, Shell Scripting
+
+Metodologias:
+• Scrum, Kanban, XP
+• TDD, BDD
+• Code Review, Pair Programming
+• CI/CD, DevOps
+
+IDIOMAS
+• Português: Nativo
+• Inglês: Fluente (TOEFL 105)
+• Espanhol: Intermediário
+
+CERTIFICAÇÕES
+• AWS Certified Developer Associate
+• MongoDB Certified Developer
+• React Developer Certification
+• Google Cloud Professional Developer
+
+PROJETOS DESTACADOS
+
+E-commerce Platform (2023)
+• Plataforma completa de e-commerce com React e Node.js
+• Integração com múltiplos gateways de pagamento
+• Sistema de recomendação com IA
+• 50k+ usuários ativos
+
+Dashboard Analytics (2022)
+• Dashboard em tempo real para análise de dados
+• Visualizações interativas com D3.js
+• API RESTful com cache Redis
+• Deploy automatizado com Docker
+
+PROJETOS OPEN SOURCE
+• Contribuições para React, Vue.js e outras bibliotecas
+• Mantenedora de 3 projetos open source
+• Palestrante em conferências de tecnologia
+
+INTERESSES
+• Inteligência Artificial e Machine Learning
+• Arquitetura de Software
+• UX/UI Design
+• Comunidade de desenvolvedores
+• Novas tecnologias e frameworks
