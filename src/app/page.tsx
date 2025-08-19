@@ -1,11 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+// import { useSession } from 'next-auth/react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { VagaCard } from '@/components/VagaCard';
 import { FileUpload } from '@/components/FileUpload';
-import { Plus, Briefcase, Upload, Users } from 'lucide-react';
+import { Navigation } from '@/components/Navigation';
+import { Plus, Briefcase, Upload, Users, HelpCircle } from 'lucide-react';
+import Link from 'next/link';
 
 interface Vaga {
   _id: string;
@@ -86,14 +89,16 @@ export default function Home() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">Painel de Recrutamento</h1>
-        <p className="text-gray-500">
-          Gerencie vagas e analise candidatos com IA
-        </p>
-      </div>
+    <>
+      <Navigation />
+      <div className="container mx-auto px-4 py-8">
+        {/* Header */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold mb-2">Painel de Recrutamento</h1>
+          <p className="text-gray-500">
+            Gerencie vagas e analise candidatos com IA
+          </p>
+        </div>
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -152,12 +157,20 @@ export default function Home() {
       <div className="space-y-6">
         <div className="flex items-center justify-between">
           <h2 className="text-2xl font-semibold">Vagas Disponíveis</h2>
-          {!showUpload && (
-            <Button onClick={() => setShowUpload(true)}>
-              <Plus className="h-4 w-4 mr-2" />
-              Adicionar Vagas
-            </Button>
-          )}
+          <div className="flex gap-2">
+            <Link href="/instrucoes">
+              <Button variant="outline">
+                <HelpCircle className="h-4 w-4 mr-2" />
+                Instruções
+              </Button>
+            </Link>
+            {!showUpload && (
+              <Button onClick={() => setShowUpload(true)}>
+                <Plus className="h-4 w-4 mr-2" />
+                Adicionar Vagas
+              </Button>
+            )}
+          </div>
         </div>
 
         {vagas.length === 0 ? (
@@ -183,5 +196,6 @@ export default function Home() {
         )}
       </div>
     </div>
+    </>
   );
 }

@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
 import connectDB from '@/lib/mongo';
 import Candidato from '@/lib/models/Candidato';
 import Vaga from '@/lib/models/Vaga';
@@ -8,6 +10,15 @@ import { extractCandidateName } from '@/utils/candidate-utils';
 
 export async function POST(request: NextRequest) {
   try {
+    const session = await getServerSession(authOptions);
+    
+    if (!session?.user?.id) {
+      return NextResponse.json(
+        { error: 'Unauthorized' },
+        { status: 401 }
+      );
+    }
+
     await connectDB();
     
     const formData = await request.formData();
@@ -28,8 +39,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Verificar se a vaga existe
-    const vaga = await Vaga.findOne({ vagaId });
+    // Verificar se a vaga existe e pertence ao usuário
+    const vaga = await Vaga.findOne({ vagaId, userId: session.user.id });
     if (!vaga) {
       return NextResponse.json(
         { error: 'Vaga not found' },
@@ -63,6 +74,7 @@ export async function POST(request: NextRequest) {
       const observacoes = await generateObservations(vaga.requisitos, textoCurriculo);
       
       const candidato = new Candidato({
+        userId: session.user.id,
         nome,
         vagaId,
         textoCurriculo,

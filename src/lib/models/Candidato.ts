@@ -1,6 +1,11 @@
 import mongoose from 'mongoose';
 
 const candidatoSchema = new mongoose.Schema({
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Usuario',
+    required: true
+  },
   nome: {
     type: String,
     required: true,

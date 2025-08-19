@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { RankingTable } from '@/components/RankingTable';
+import { Navigation } from '@/components/Navigation';
 import { ArrowLeft, RefreshCw } from 'lucide-react';
 import Link from 'next/link';
 
@@ -118,42 +119,45 @@ export default function VagaRankingPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      {/* Header */}
-      <div className="mb-8">
-        <div className="flex items-center justify-between">
-          <div>
-            <Link href="/">
-              <Button variant="ghost" className="mb-4">
-                <ArrowLeft className="h-4 w-4 mr-2" />
-                Voltar às Vagas
+    <>
+      <Navigation />
+      <div className="container mx-auto px-4 py-8">
+        {/* Header */}
+        <div className="mb-8">
+          <div className="flex items-center justify-between">
+            <div>
+              <Link href="/">
+                <Button variant="ghost" className="mb-4">
+                  <ArrowLeft className="h-4 w-4 mr-2" />
+                  Voltar às Vagas
+                </Button>
+              </Link>
+              <h1 className="text-3xl font-bold mb-2">Ranking de Candidatos</h1>
+              <p className="text-gray-500">
+                Análise de compatibilidade com a vaga usando IA
+              </p>
+            </div>
+            <div className="flex gap-2">
+              <Button onClick={fetchRanking} variant="outline">
+                <RefreshCw className="h-4 w-4 mr-2" />
+                Atualizar
               </Button>
-            </Link>
-            <h1 className="text-3xl font-bold mb-2">Ranking de Candidatos</h1>
-            <p className="text-gray-500">
-              Análise de compatibilidade com a vaga usando IA
-            </p>
-          </div>
-          <div className="flex gap-2">
-            <Button onClick={fetchRanking} variant="outline">
-              <RefreshCw className="h-4 w-4 mr-2" />
-              Atualizar
-            </Button>
-            <Link href={`/upload/candidatos?vagaId=${vagaId}`}>
-              <Button>
-                Adicionar Candidatos
-              </Button>
-            </Link>
+              <Link href={`/upload/candidatos?vagaId=${vagaId}`}>
+                <Button>
+                  Adicionar Candidatos
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Ranking Table */}
-      <RankingTable
-        vaga={rankingData.vaga}
-        ranking={rankingData.ranking}
-        totalCandidatos={rankingData.totalCandidatos}
-      />
-    </div>
+        {/* Ranking Table */}
+        <RankingTable
+          vaga={rankingData.vaga}
+          ranking={rankingData.ranking}
+          totalCandidatos={rankingData.totalCandidatos}
+        />
+      </div>
+    </>
   );
 }

@@ -162,7 +162,7 @@ function generateUniqueText(filename: string): string {
   const experience = experiences[Math.abs(hash) % experiences.length];
   const company = companies[Math.abs(hash >> 8) % companies.length];
   const skillSet = skills[Math.abs(hash >> 16) % skills.length];
-  const years = 2 + (Math.abs(hash) % 8);
+  // const years = 2 + (Math.abs(hash) % 8);
   
   return `
     CURRÍCULO VITAE

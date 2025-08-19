@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
 import connectDB from '@/lib/mongo';
 import Vaga from '@/lib/models/Vaga';
 import { generateEmbedding } from '@/lib/gemini';
@@ -15,8 +17,17 @@ interface VagaData {
 
 export async function GET() {
   try {
+    const session = await getServerSession(authOptions);
+    
+    if (!session?.user?.id) {
+      return NextResponse.json(
+        { error: 'Unauthorized' },
+        { status: 401 }
+      );
+    }
+
     await connectDB();
-    const vagas = await Vaga.find({}).sort({ createdAt: -1 });
+    const vagas = await Vaga.find({ userId: session.user.id }).sort({ createdAt: -1 });
     
     return NextResponse.json({ vagas });
   } catch (error) {
@@ -30,6 +41,15 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   try {
+    const session = await getServerSession(authOptions);
+    
+    if (!session?.user?.id) {
+      return NextResponse.json(
+        { error: 'Unauthorized' },
+        { status: 401 }
+      );
+    }
+
     await connectDB();
     
     const formData = await request.formData();
@@ -73,6 +93,7 @@ export async function POST(request: NextRequest) {
       const embedding = await generateEmbedding(vagaData.requisitos);
       
       const vaga = new Vaga({
+        userId: session.user.id,
         titulo: vagaData.titulo,
         requisitos: vagaData.requisitos,
         local: vagaData.local,

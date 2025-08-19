@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { FileUpload } from '@/components/FileUpload';
+import { Navigation } from '@/components/Navigation';
 import { ArrowLeft, CheckCircle, AlertCircle } from 'lucide-react';
 import Link from 'next/link';
 
@@ -116,20 +117,22 @@ function UploadCandidatosContent() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      {/* Header */}
-      <div className="mb-8">
-        <Link href="/">
-          <Button variant="ghost" className="mb-4">
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            Voltar às Vagas
-          </Button>
-        </Link>
-        <h1 className="text-3xl font-bold mb-2">Upload de Candidatos</h1>
-        <p className="text-gray-500">
-          Adicione currículos para a vaga selecionada
-        </p>
-      </div>
+    <>
+      <Navigation />
+      <div className="container mx-auto px-4 py-8">
+        {/* Header */}
+        <div className="mb-8">
+          <Link href="/">
+            <Button variant="ghost" className="mb-4">
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Voltar às Vagas
+            </Button>
+          </Link>
+          <h1 className="text-3xl font-bold mb-2">Upload de Candidatos</h1>
+          <p className="text-gray-500">
+            Adicione currículos para a vaga selecionada
+          </p>
+        </div>
 
       {/* Vaga Info */}
       <Card className="mb-8">
@@ -236,6 +239,7 @@ function UploadCandidatosContent() {
         </div>
       )}
     </div>
+    </>
   );
 }
 

@@ -1,6 +1,11 @@
 import mongoose from 'mongoose';
 
 const vagaSchema = new mongoose.Schema({
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Usuario',
+    required: true
+  },
   titulo: {
     type: String,
     required: true,
@@ -23,7 +28,6 @@ const vagaSchema = new mongoose.Schema({
   vagaId: {
     type: String,
     required: true,
-    unique: true,
     trim: true
   },
   embedding: {

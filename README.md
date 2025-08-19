@@ -4,6 +4,8 @@ Um sistema completo de recrutamento que utiliza inteligência artificial para an
 
 ## 🚀 Funcionalidades
 
+- **Sistema de Autenticação**: Cadastro e login de usuários
+- **Isolamento de Dados**: Cada usuário vê apenas suas vagas e candidatos
 - **Upload de Vagas**: Suporte para arquivos Excel/CSV com informações das vagas
 - **Upload de Candidatos**: Processamento de currículos em PDF/DOCX
 - **Extração Automática de Nome**: Identificação automática do nome do candidato no currículo
@@ -17,6 +19,7 @@ Um sistema completo de recrutamento que utiliza inteligência artificial para an
 
 - **Frontend**: Next.js 14, TypeScript, Tailwind CSS, shadcn/ui
 - **Backend**: Next.js API Routes, MongoDB, Mongoose
+- **Autenticação**: NextAuth.js, bcryptjs
 - **IA**: Google Gemini API para embeddings e análise
 - **Processamento**: 
   - XLSX para Excel/CSV
@@ -50,7 +53,13 @@ MONGO_URI=mongodb://localhost:27017/recruiter
 
 # Google Gemini API Key
 GEMINI_API_KEY=sua_chave_api_gemini_aqui
+
+# NextAuth Configuration
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=your-secret-key-here-change-in-production
 ```
+
+> **Nota**: Para gerar o NEXTAUTH_SECRET, execute: `openssl rand -base64 32`
 
 4. **Configure o MongoDB**
 - Instale o MongoDB localmente ou use MongoDB Atlas
@@ -96,7 +105,12 @@ src/
 
 ## 📊 Como Usar
 
-### 1. Upload de Vagas
+### 1. Autenticação
+- Acesse `/cadastro` para criar uma nova conta
+- Faça login em `/login` com suas credenciais
+- Cada usuário terá acesso apenas aos seus dados
+
+### 2. Upload de Vagas
 - Prepare um arquivo Excel/CSV com as colunas:
   - `titulo`: Título da vaga
   - `requisitos`: Descrição dos requisitos
@@ -106,7 +120,7 @@ src/
 - Faça upload na página inicial
 - **Caracteres especiais são tratados automaticamente**
 
-### 2. Upload de Candidatos
+### 3. Upload de Candidatos
 - Selecione uma vaga
 - Faça upload de currículos em PDF ou DOCX
 - O sistema processará automaticamente:
